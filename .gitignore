@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
