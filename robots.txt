@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://weatherspro.app/sitemap.xml
+Sitemap: https://weiproduct.github.io/Weather/sitemap.xml
 
 # Block crawling of admin/config files
 Disallow: /_config.yml
