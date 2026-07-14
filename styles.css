@@ -128,10 +128,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 
 /* ---------- Hero weather widget (signature) ---------- */
 .hero-visual { position: relative; display: flex; justify-content: center; }
-.device { position: relative; width: 300px; max-width: 78vw; background: var(--card); border: 1px solid var(--border-color); border-radius: 40px; padding: 14px 12px 16px; box-shadow: var(--shadow-lg); }
+.device { position: relative; width: 300px; max-width: 78vw; aspect-ratio: 9 / 19.5; display: flex; flex-direction: column; overflow: hidden; background: var(--card); border: 1px solid var(--border-color); border-radius: 40px; padding: 14px 12px 16px; box-shadow: var(--shadow-lg); }
 .device-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: var(--text-primary); opacity: .9; border-radius: 999px; z-index: 3; }
 :root[data-theme="dark"] .device-notch { background: #000; opacity: 1; }
-.wx { position: relative; margin-top: 22px; border-radius: 28px; padding: 44px 16px 16px; overflow: hidden; color: #fff; background: linear-gradient(165deg, #2f8bff 0%, #63b8f0 48%, #a9d8f5 100%); }
+.wx { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; margin-top: 22px; border-radius: 28px; padding: 46px 16px 18px; overflow: hidden; color: #fff; background: linear-gradient(165deg, #2f8bff 0%, #63b8f0 48%, #a9d8f5 100%); }
 :root[data-theme="dark"] .wx { background: linear-gradient(165deg, #10214a 0%, #1b2f63 52%, #24407e 100%); }
 .wx-sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .wx-sun { position: absolute; top: 26px; right: 30px; width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff3c4, #ffd76b 60%, rgba(255,215,107,0) 72%); box-shadow: 0 0 34px rgba(255,214,107,.75); animation: wxGlow 4s ease-in-out infinite; }
@@ -149,23 +149,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .wx-city { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,.18); }
 .wx-ai { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; background: rgba(255,255,255,.22); padding: 4px 9px; border-radius: 999px; backdrop-filter: blur(4px); }
 .wx-ai .dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,.6); animation: pulse 2s infinite; }
-.wx-now { position: relative; z-index: 1; margin: 10px 0 16px; display: flex; align-items: flex-end; gap: 12px; }
-.wx-temp { font-size: 64px; font-weight: 800; line-height: .95; letter-spacing: -0.03em; text-shadow: 0 2px 10px rgba(0,0,0,.18); }
+.wx-now { position: relative; z-index: 1; margin: 0; display: flex; align-items: flex-end; gap: 12px; }
+.wx-temp { font-size: 72px; font-weight: 800; line-height: .95; letter-spacing: -0.03em; text-shadow: 0 2px 10px rgba(0,0,0,.18); }
 .wx-temp span { font-size: 32px; font-weight: 600; vertical-align: top; }
 .wx-meta { display: flex; flex-direction: column; padding-bottom: 8px; }
 .wx-cond { font-size: 15px; font-weight: 700; }
 .wx-range { font-size: 12px; opacity: .9; }
-.wx-metrics { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; background: rgba(255,255,255,.18); border-radius: 14px; padding: 10px 6px; backdrop-filter: blur(6px); }
+.wx-metrics { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; background: rgba(255,255,255,.18); border-radius: 14px; padding: 15px 6px; backdrop-filter: blur(6px); }
 .wx-m { display: flex; flex-direction: column; align-items: center; gap: 2px; }
 .wx-m span { font-size: 10px; opacity: .88; }
 .wx-m strong { font-size: 14px; font-weight: 700; }
-.wx-hours { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; margin-top: 12px; }
-.wx-hr { display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(255,255,255,.14); border-radius: 12px; padding: 9px 0; animation: evIn .6s cubic-bezier(.2,.8,.25,1) backwards; }
+.wx-hours { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; margin-top: 0; }
+.wx-hr { display: flex; flex-direction: column; align-items: center; gap: 6px; background: rgba(255,255,255,.14); border-radius: 12px; padding: 14px 0; animation: evIn .6s cubic-bezier(.2,.8,.25,1) backwards; }
 .wx-hr:nth-child(1){animation-delay:.2s} .wx-hr:nth-child(2){animation-delay:.34s} .wx-hr:nth-child(3){animation-delay:.48s} .wx-hr:nth-child(4){animation-delay:.62s} .wx-hr:nth-child(5){animation-delay:.76s}
 .wx-hr span { font-size: 10px; opacity: .9; font-weight: 600; }
 .wx-hr i { font-size: 15px; font-style: normal; line-height: 1; }
 .wx-hr b { font-size: 13px; font-weight: 700; }
-.wx-foot { position: relative; z-index: 1; margin-top: 12px; text-align: center; font-size: 11px; font-weight: 600; background: rgba(255,255,255,.2); padding: 8px; border-radius: 10px; backdrop-filter: blur(4px); }
+.wx-foot { position: relative; z-index: 1; margin-top: 0; text-align: center; font-size: 11px; font-weight: 600; background: rgba(255,255,255,.2); padding: 12px; border-radius: 10px; backdrop-filter: blur(4px); }
 .hero-chip { position: absolute; background: var(--card); color: var(--text-primary); border: 1px solid var(--border-color); box-shadow: var(--shadow-lg); border-radius: 14px; padding: 10px 14px; font-size: 13px; font-weight: 700; }
 .chip-a { top: 12%; left: -6%; animation: float 5s ease-in-out infinite; }
 .chip-b { bottom: 12%; right: -4%; animation: float 5s ease-in-out infinite .8s; }
