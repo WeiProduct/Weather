@@ -1,228 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Weather - WeiProduct</title>
-    <meta name="description" content="AI Weather is a WeiProduct weather planning app for current conditions, forecasts, city management, and practical daily recommendations.">
-    <meta name="theme-color" content="#1769ff">
+    <meta name="theme-color" content="#1769ff" id="themeColorMeta">
+    <meta name="robots" content="index, follow">
+    <title>AI Weather — Forecasts, Cities & Daily Planning | iOS</title>
+    <meta name="description" content="AI Weather is an iOS weather app for current conditions, hourly and multi-day forecasts, multi-city management, and practical daily recommendations. Bilingual EN / 中文.">
+    <meta property="og:title" content="AI Weather — Forecasts, Cities & Daily Planning">
+    <meta property="og:description" content="Check conditions, scan the forecast, manage cities, and turn the weather into clear daily decisions. iOS · Bilingual EN / 中文.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="WeiProduct">
-    <meta property="og:title" content="AI Weather - WeiProduct">
-    <meta property="og:description" content="Weather planning with forecast views, city management, alerts, and practical daily recommendations.">
     <meta property="og:url" content="https://weiproduct.github.io/Weather/">
-    <meta property="og:image" content="https://weiproduct.github.io/Weather/assets/weatherspro.png">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="AI Weather - WeiProduct">
-    <meta name="twitter:description" content="Weather planning and daily forecast support by WeiProduct.">
+    <meta property="og:image" content="https://weiproduct.github.io/Weather/assets/hero-screenshot.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Weather — Forecasts, Cities & Daily Planning">
+    <meta name="twitter:description" content="Current conditions, hourly & multi-day forecasts, multi-city management, and practical daily recommendations. iOS.">
+    <meta name="twitter:image" content="https://weiproduct.github.io/Weather/assets/hero-screenshot.png">
     <link rel="canonical" href="https://weiproduct.github.io/Weather/">
-    <link rel="icon" href="assets/weatherspro.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/weatherspro.png">
+    <link rel="alternate" hreflang="en" href="https://weiproduct.github.io/Weather/">
+    <link rel="alternate" hreflang="zh-CN" href="https://weiproduct.github.io/Weather/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%231769ff%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%2306a8cf%27%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2724%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Cg%20stroke%3D%27%23ffd76b%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M64%2014v6%27%2F%3E%3Cpath%20d%3D%27M86%2035h-6%27%2F%3E%3Cpath%20d%3D%27M78%2022l-4%204%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%2735%27%20r%3D%2712%27%20fill%3D%27%23ffd76b%27%2F%3E%3Cg%20fill%3D%27%23fff%27%3E%3Ccircle%20cx%3D%2738%27%20cy%3D%2760%27%20r%3D%2713%27%2F%3E%3Ccircle%20cx%3D%2753%27%20cy%3D%2753%27%20r%3D%2716%27%2F%3E%3Ccircle%20cx%3D%2766%27%20cy%3D%2761%27%20r%3D%2712%27%2F%3E%3Crect%20x%3D%2733%27%20y%3D%2760%27%20width%3D%2742%27%20height%3D%2715%27%20rx%3D%277.5%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%231769ff%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%2306a8cf%27%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2724%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Cg%20stroke%3D%27%23ffd76b%27%20stroke-width%3D%274%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M64%2014v6%27%2F%3E%3Cpath%20d%3D%27M86%2035h-6%27%2F%3E%3Cpath%20d%3D%27M78%2022l-4%204%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2764%27%20cy%3D%2735%27%20r%3D%2712%27%20fill%3D%27%23ffd76b%27%2F%3E%3Cg%20fill%3D%27%23fff%27%3E%3Ccircle%20cx%3D%2738%27%20cy%3D%2760%27%20r%3D%2713%27%2F%3E%3Ccircle%20cx%3D%2753%27%20cy%3D%2753%27%20r%3D%2716%27%2F%3E%3Ccircle%20cx%3D%2766%27%20cy%3D%2761%27%20r%3D%2712%27%2F%3E%3Crect%20x%3D%2733%27%20y%3D%2760%27%20width%3D%2742%27%20height%3D%2715%27%20rx%3D%277.5%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "AI Weather",
-        "applicationCategory": "WeatherApplication",
-        "operatingSystem": "iOS",
-        "url": "https://weiproduct.github.io/Weather/",
-        "downloadUrl": "https://apps.apple.com/app/id6748373741",
-        "image": "https://weiproduct.github.io/Weather/assets/weatherspro.png",
-        "description": "A weather planning app for current conditions, forecasts, city management, alerts, and practical daily recommendations.",
-        "creator": {
-            "@type": "Organization",
-            "name": "WeiProduct",
-            "url": "https://weiproduct.com"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AI Weather",
+      "applicationCategory": "WeatherApplication",
+      "operatingSystem": "iOS",
+      "url": "https://weiproduct.github.io/Weather/",
+      "image": "https://weiproduct.github.io/Weather/assets/hero-screenshot.png",
+      "downloadUrl": "https://apps.apple.com/app/id6748373741",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "creator": { "@type": "Organization", "name": "WeiProduct", "url": "https://weiproduct.com" },
+      "description": "AI Weather is an iOS weather app for current conditions, hourly and multi-day forecasts, multi-city management, and practical daily recommendations, with a bilingual English / Chinese interface."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Does AI Weather need an internet connection?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Weather data is fetched from weather providers, so a connection is needed to refresh current conditions and forecasts." } },
+        { "@type": "Question", "name": "How is my location used?", "acceptedAnswer": { "@type": "Answer", "text": "Location is permission-based and is used only to retrieve weather for your area. You can deny, change, or revoke access anytime in system Settings." } },
+        { "@type": "Question", "name": "Can I track more than one city?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can add and manage multiple cities for home, travel, and family, and switch between them at any time." } },
+        { "@type": "Question", "name": "Do I need to create an account?", "acceptedAnswer": { "@type": "Answer", "text": "No. AI Weather works without sign-up or account creation." } },
+        { "@type": "Question", "name": "Which languages does AI Weather support?", "acceptedAnswer": { "@type": "Answer", "text": "AI Weather offers a bilingual interface in English and Simplified Chinese, and you can switch anytime." } }
+      ]
     }
     </script>
 </head>
 <body>
-    <nav class="navbar" aria-label="Primary navigation">
-        <div class="container nav-shell">
-            <a class="brand" href="#top" aria-label="AI Weather home">
-                <img src="assets/weatherspro.png" alt="" width="36" height="36">
-                <span>AI Weather</span>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a class="nav-brand" href="#top" aria-label="AI Weather">
+                <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" width="34" height="34"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1769ff"/><stop offset="1" stop-color="#06a8cf"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#bg)"/><g stroke="#ffd76b" stroke-width="4" stroke-linecap="round"><path d="M64 14v6"/><path d="M86 35h-6"/><path d="M78 22l-4 4"/></g><circle cx="64" cy="35" r="12" fill="#ffd76b"/><g fill="#fff"><circle cx="38" cy="60" r="13"/><circle cx="53" cy="53" r="16"/><circle cx="66" cy="61" r="12"/><rect x="33" y="60" width="42" height="15" rx="7.5"/></g></svg>
+                </span>
+                <span class="brand-name" data-i18n="brandName">AI Weather</span>
             </a>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#capabilities">Capabilities</a>
-                <a href="#screens">Screens</a>
-                <a href="#privacy">Privacy</a>
-                <a href="https://apps.apple.com/app/id6748373741" class="nav-cta" target="_blank" rel="noopener noreferrer">App Store</a>
+            <div class="nav-menu">
+                <a href="#how" class="nav-link" data-i18n="navHow">How it works</a>
+                <a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
+                <a href="#screenshots" class="nav-link" data-i18n="navScreenshots">Screenshots</a>
+                <a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a>
+                <button class="icon-btn" type="button" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+                </button>
+                <button class="lang-switch" type="button" id="langSwitch" aria-label="Switch language">中文</button>
+                <a href="https://apps.apple.com/app/id6748373741" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="navGet">Get App</a>
             </div>
-            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
-    <main id="top">
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-copy reveal">
-                    <p class="eyebrow">WeiProduct weather planning</p>
-                    <h1>Weather context for better daily decisions.</h1>
-                    <p class="hero-subtitle">
-                        AI Weather helps users check current conditions, review forecasts, manage cities, and translate weather into practical planning decisions such as clothing, travel, and daily timing.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="https://apps.apple.com/app/id6748373741" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-                        <a href="#screens" class="btn btn-secondary">View app screens</a>
+    <main id="main">
+    <section class="hero" id="top">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="eyebrow" data-i18n="heroEyebrow">✦ AI-powered weather</span>
+                <h1 class="hero-title" data-i18n="heroTitle">Let the weather plan your day</h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">Check conditions, scan the forecast, manage your cities, and turn the weather into clear daily decisions — what to wear, when to go, what to prepare.</p>
+                <div class="hero-buttons">
+                    <a href="https://apps.apple.com/app/id6748373741" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <svg class="apple-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <span class="download-label" data-i18n="downloadBtn">Download on App Store</span>
+                    </a>
+                    <a href="#how" class="btn btn-secondary" data-i18n="learnMore">Learn more</a>
+                </div>
+                <ul class="hero-trust">
+                    <li data-i18n="trust1">📍 Permission-based location</li>
+                    <li data-i18n="trust2">🌆 Multi-city</li>
+                    <li data-i18n="trust3">🌏 EN / 中文</li>
+                </ul>
+            </div>
+            <div class="hero-visual">
+                <div class="device" role="img" aria-label="AI Weather showing current conditions, hourly forecast, and a daily recommendation">
+                    <div class="device-notch" aria-hidden="true"></div>
+                    <div class="wx">
+                        <div class="wx-sky" aria-hidden="true">
+                            <span class="wx-sun"></span>
+                            <span class="wx-cloud cl1"></span>
+                            <span class="wx-cloud cl2"></span>
+                        </div>
+                        <div class="wx-top">
+                            <span class="wx-city"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="wxCity">San Francisco</span></span>
+                            <span class="wx-ai"><span class="dot"></span><span data-i18n="wxAi">AI insight</span></span>
+                        </div>
+                        <div class="wx-now">
+                            <div class="wx-temp">21<span>°</span></div>
+                            <div class="wx-meta">
+                                <span class="wx-cond" data-i18n="wxCond">Partly Cloudy</span>
+                                <span class="wx-range" data-i18n="wxRange">H:24°  L:15°</span>
+                            </div>
+                        </div>
+                        <div class="wx-metrics">
+                            <div class="wx-m"><span data-i18n="wxFeels">Feels</span><strong>22°</strong></div>
+                            <div class="wx-m"><span data-i18n="wxHum">Humidity</span><strong>62%</strong></div>
+                            <div class="wx-m"><span data-i18n="wxWind">Wind</span><strong>12 km/h</strong></div>
+                        </div>
+                        <div class="wx-hours">
+                            <div class="wx-hr"><span data-i18n="wxNow">Now</span><i>⛅</i><b>21°</b></div>
+                            <div class="wx-hr"><span>1PM</span><i>☀️</i><b>23°</b></div>
+                            <div class="wx-hr"><span>2PM</span><i>☀️</i><b>24°</b></div>
+                            <div class="wx-hr"><span>3PM</span><i>⛅</i><b>22°</b></div>
+                            <div class="wx-hr"><span>4PM</span><i>🌧️</i><b>19°</b></div>
+                        </div>
+                        <div class="wx-foot" data-i18n="wxFoot">Rain likely around 4 PM · bring an umbrella</div>
                     </div>
-                    <div class="capability-strip" aria-label="Product capability summary">
-                        <span>Forecast</span>
-                        <span>Plan</span>
-                        <span>Prepare</span>
-                    </div>
                 </div>
-                <div class="hero-device reveal">
-                    <div class="device-frame">
-                        <img src="assets/hero-screenshot.png" alt="AI Weather app screen">
-                    </div>
-                </div>
+                <div class="hero-chip chip-a" data-i18n="chipA">☂️ Rain at 4 PM</div>
+                <div class="hero-chip chip-b" data-i18n="chipB">🧥 Light jacket</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="capabilities" class="section capabilities">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <p class="eyebrow">Capabilities</p>
-                    <h2>A practical weather surface, not just a forecast list.</h2>
-                    <p>Weather apps win when the information is fast to understand. This page now emphasizes concrete user jobs instead of unsupported scale claims.</p>
-                </div>
-                <div class="card-grid">
-                    <article class="info-card reveal">
-                        <span class="card-number">01</span>
-                        <h3>Current conditions</h3>
-                        <p>Show the weather state users need first: temperature, condition, and immediate context.</p>
-                    </article>
-                    <article class="info-card reveal">
-                        <span class="card-number">02</span>
-                        <h3>Forecast planning</h3>
-                        <p>Help users scan short-term and multi-day forecasts for daily plans and schedule decisions.</p>
-                    </article>
-                    <article class="info-card reveal">
-                        <span class="card-number">03</span>
-                        <h3>City management</h3>
-                        <p>Support multiple locations so users can compare weather for home, travel, and family contexts.</p>
-                    </article>
-                    <article class="info-card reveal">
-                        <span class="card-number">04</span>
-                        <h3>Practical guidance</h3>
-                        <p>Turn conditions into recommendations such as clothing, alerts, and preparation cues.</p>
-                    </article>
-                </div>
+    <section class="proof" aria-label="trust">
+        <div class="container proof-row">
+            <div class="proof-rating">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <div class="proof-sub"><strong>App Store</strong><span data-i18n="proofRating">Weather · Lifestyle</span></div>
             </div>
-        </section>
+            <div class="proof-stats">
+                <div class="stat"><strong>iOS</strong><span data-i18n="stat1">Native app</span></div>
+                <div class="stat"><strong>7-Day</strong><span data-i18n="stat2">Forecast outlook</span></div>
+                <div class="stat"><strong>EN / 中文</strong><span data-i18n="stat3">Bilingual UI</span></div>
+                <div class="stat"><strong>0</strong><span data-i18n="stat4">Ads · Accounts</span></div>
+            </div>
+        </div>
+    </section>
 
-        <section id="screens" class="section screens">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <p class="eyebrow">Product evidence</p>
-                    <h2>Real app screens across the forecast workflow.</h2>
-                    <p>The screenshots are the strongest asset in this repository, so the layout now gives them a clean, inspectable presentation.</p>
+    <section id="how" class="how">
+        <div class="container">
+            <h2 class="section-title" data-i18n="howTitle">Three steps to a weather-ready day</h2>
+            <p class="section-sub" data-i18n="howSub">From forecast to a real decision in seconds.</p>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="step-badge">1</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+                    <h3 data-i18n="step1Title">Add your cities</h3>
+                    <p data-i18n="step1Desc">Add your home city and anywhere you travel, and grant location for instant local weather.</p>
                 </div>
-                <div class="screens-grid">
-                    <article class="screen-card reveal">
-                        <img src="assets/screenshot-1.png" alt="Weather dashboard screen">
-                        <h3>Dashboard</h3>
-                        <p>Current weather and primary daily context.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <img src="assets/screenshot-2.png" alt="Detailed weather screen">
-                        <h3>Weather details</h3>
-                        <p>Deeper weather metrics for users who need more signal.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <img src="assets/screenshot-3.png" alt="Forecast screen">
-                        <h3>Forecast</h3>
-                        <p>Extended planning across the coming days.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <img src="assets/screenshot-4.png" alt="City management screen">
-                        <h3>Cities</h3>
-                        <p>Manage locations for travel, family, and work planning.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <img src="assets/screenshot-5.png" alt="Settings screen">
-                        <h3>Preferences</h3>
-                        <p>Units, notifications, and display choices.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <img src="assets/screenshot-6.png" alt="Language selection screen">
-                        <h3>Localization</h3>
-                        <p>Language selection for broader accessibility.</p>
-                    </article>
+                <div class="step reveal">
+                    <div class="step-badge">2</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg></div>
+                    <h3 data-i18n="step2Title">Check conditions & forecast</h3>
+                    <p data-i18n="step2Desc">See current weather, hourly changes, and the multi-day outlook at a single glance.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-badge">3</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <h3 data-i18n="step3Title">Plan with confidence</h3>
+                    <p data-i18n="step3Desc">Turn the forecast into decisions: what to wear, when to head out, what to prepare.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="privacy" class="section privacy-section">
-            <div class="container privacy-panel reveal">
-                <div>
-                    <p class="eyebrow">Privacy posture</p>
-                    <h2>Location is used for weather context, with clear user permission.</h2>
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="featuresTitle">Everything you need to read the sky</h2>
+            <p class="section-sub" data-i18n="featuresSub">A practical weather surface, not just a list of numbers.</p>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/><path d="M12 8v6.5"/></svg></div>
+                    <h3 data-i18n="feature1Title">Current conditions</h3>
+                    <p data-i18n="feature1Desc">Temperature, condition, feels-like, and the context you need first — all up front.</p>
                 </div>
-                <p>
-                    Weather products depend on location. The site now explains that location access should be permission-based and used to retrieve weather data rather than to create unsupported tracking claims.
-                </p>
-                <a href="privacy-policy.html" class="text-link">Read privacy policy</a>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M7 15l3.5-4 3 2.5L20 7"/></svg></div>
+                    <h3 data-i18n="feature2Title">Hourly & multi-day forecast</h3>
+                    <p data-i18n="feature2Desc">Scan short-term changes hour by hour and plan several days ahead with a clear outlook.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+                    <h3 data-i18n="feature3Title">City management</h3>
+                    <p data-i18n="feature3Desc">Save multiple locations for home, travel, and family, and switch between them instantly.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 3.5 6 6.6 6 9.4A6 6 0 0 1 6 12.4C6 9.6 8 6.5 12 3z"/><path d="M12 21v-3"/></svg></div>
+                    <h3 data-i18n="feature4Title">Practical guidance</h3>
+                    <p data-i18n="feature4Desc">Clothing tips, weather alerts, and preparation cues turned from raw conditions.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg></div>
+                    <h3 data-i18n="feature5Title">Bilingual interface</h3>
+                    <p data-i18n="feature5Desc">Full English and Simplified Chinese, with a one-tap switch anytime you like.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7 3v5c0 4.4-3 8.3-7 9.5-4-1.2-7-5.1-7-9.5v-5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3 data-i18n="feature6Title">Privacy-minded</h3>
+                    <p data-i18n="feature6Desc">Location is permission-based and used only to fetch weather — no account, no ads.</p>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="support" class="download">
-            <div class="container support-card reveal">
-                <p class="eyebrow">Availability and support</p>
-                <h2>AI Weather is part of the WeiProduct app portfolio.</h2>
-                <p>AI Weather is available on the App Store. For support or product feedback, contact WeiProduct directly.</p>
-                <div class="hero-actions center">
-                    <a href="https://apps.apple.com/app/id6748373741" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-                    <a href="https://github.com/WeiProduct/Weather" class="btn btn-secondary">View repository</a>
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title" data-i18n="screenshotsTitle">Real app screens</h2>
+            <p class="section-sub" data-i18n="screenshotsSub">Swipe through — tap any shot to zoom in.</p>
+            <div class="gallery">
+                <button class="gal-arrow prev" type="button" aria-label="Previous" id="galPrev">‹</button>
+                <div class="gal-track" id="galTrack">
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-1.png" alt="Weather dashboard with current conditions" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot1">Current conditions at a glance</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-2.png" alt="Detailed weather metrics" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot2">Deeper weather details</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-3.png" alt="Multi-day forecast" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot3">Hourly & multi-day forecast</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-4.png" alt="City management" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot4">Manage all your cities</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-5.png" alt="Preferences and settings" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot5">Units & preferences</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="phone"><img src="assets/screenshot-6.png" alt="Language selection" width="640" height="1387" loading="lazy" decoding="async"></div>
+                        <figcaption data-i18n="shot6">Switch language anytime</figcaption>
+                    </figure>
                 </div>
+                <button class="gal-arrow next" type="button" aria-label="Next" id="galNext">›</button>
             </div>
-        </section>
+            <div class="gal-dots" id="galDots" aria-hidden="true"></div>
+        </div>
+    </section>
+
+    <section id="privacy" class="privacy">
+        <div class="container privacy-card">
+            <div class="privacy-lead">
+                <h2 data-i18n="privacyTitle">Location is used for weather — with your permission</h2>
+                <p data-i18n="privacyDesc">Weather needs location. AI Weather asks first, uses it only to fetch forecasts from weather providers, and you stay in control — change or revoke access anytime in Settings. No account required.</p>
+            </div>
+            <ul class="privacy-points">
+                <li><span aria-hidden="true">📍</span><span data-i18n="pp1">Permission-based location</span></li>
+                <li><span aria-hidden="true">⚙️</span><span data-i18n="pp2">Revoke anytime in Settings</span></li>
+                <li><span aria-hidden="true">🙌</span><span data-i18n="pp3">No account needed</span></li>
+                <li><span aria-hidden="true">🚫</span><span data-i18n="pp4">No ads, no tracking</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <details class="faq-item reveal"><summary data-i18n="q1">Does AI Weather need an internet connection?</summary><p data-i18n="a1">Yes. Weather data is fetched from weather providers, so a connection is needed to refresh current conditions and forecasts.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q2">How is my location used?</summary><p data-i18n="a2">Location is permission-based and used only to retrieve weather for your area. You can deny, change, or revoke access anytime in system Settings.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q3">Can I track more than one city?</summary><p data-i18n="a3">Yes. Add and manage multiple cities for home, travel, and family, and switch between them at any time.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q4">Do I need to create an account?</summary><p data-i18n="a4">No. AI Weather works without sign-up or account creation.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q5">Which languages does AI Weather support?</summary><p data-i18n="a5">AI Weather offers a bilingual interface in English and Simplified Chinese, and you can switch anytime.</p></details>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <h2 data-i18n="downloadTitle">Download AI Weather</h2>
+                <p data-i18n="downloadSubtitle">Make the forecast work for your day.</p>
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/app/id6748373741" class="app-store-badge" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+                        <svg viewBox="0 0 140 47" width="170" height="57" role="img" aria-hidden="true">
+                            <rect x="0.5" y="0.5" width="139" height="46" rx="9" fill="#000"/>
+                            <rect x="0.5" y="0.5" width="139" height="46" rx="9" fill="none" stroke="#a6a6a6" stroke-opacity="0.5"/>
+                            <path fill="#fff" transform="translate(13.5,11.2) scale(0.82)" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            <text x="42" y="19" fill="#fff" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="8" letter-spacing="0.2">Download on the</text>
+                            <text x="41" y="36" fill="#fff" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="18" font-weight="600">App Store</text>
+                        </svg>
+                    </a>
+                </div>
+                <p class="download-note" data-i18n="downloadNote">Free on the App Store · for iOS</p>
+            </div>
+        </div>
+    </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <a class="brand footer-brand" href="#top">
-                    <img src="assets/weatherspro.png" alt="" width="32" height="32">
-                    <span>AI Weather</span>
-                </a>
-                <p>Weather planning for current conditions, forecasts, locations, and daily preparation.</p>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; <span id="currentYear">2026</span> <span data-i18n="footerRights">AI Weather. All rights reserved.</span></p>
+                <p data-i18n="footerMadeBy">Built by WeiProduct</p>
+                <p>Contact: <a href="mailto:1597498880weiproduct@gmail.com">1597498880weiproduct@gmail.com</a></p>
+                <p class="footer-links">
+                    <a href="privacy-policy.html" data-i18n="footerPrivacy">Privacy</a>
+                    <span aria-hidden="true">·</span>
+                    <a href="support.html" data-i18n="footerSupport">Support</a>
+                    <span aria-hidden="true">·</span>
+                    <a href="terms.html" data-i18n="footerTerms">Terms</a>
+                </p>
             </div>
-            <div>
-                <h3>Product</h3>
-                <a href="#capabilities">Capabilities</a>
-                <a href="#screens">Screens</a>
-                <a href="#privacy">Privacy posture</a>
-            </div>
-            <div>
-                <h3>Company</h3>
-                <a href="https://weiproduct.com">WeiProduct</a>
-                <a href="privacy-policy.html">Privacy</a>
-                <a href="terms.html">Terms</a>
-            </div>
-            <div>
-                <h3>Support</h3>
-                <a href="https://apps.apple.com/app/id6748373741" target="_blank" rel="noopener noreferrer">App Store</a>
-                <a href="support.html">Support page</a>
-                <a href="mailto:1597498880weiproduct@gmail.com">Email</a>
-            </div>
-        </div>
-        <div class="container footer-bottom">
-            <p>&copy; 2026 WeiProduct. All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-app">
+            <span class="brand-icon sm" aria-hidden="true"><svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="24" fill="url(#bg)"/><g stroke="#ffd76b" stroke-width="4" stroke-linecap="round"><path d="M64 14v6"/><path d="M86 35h-6"/><path d="M78 22l-4 4"/></g><circle cx="64" cy="35" r="12" fill="#ffd76b"/><g fill="#fff"><circle cx="38" cy="60" r="13"/><circle cx="53" cy="53" r="16"/><circle cx="66" cy="61" r="12"/><rect x="33" y="60" width="42" height="15" rx="7.5"/></g></svg></span>
+            <div class="sticky-txt"><strong data-i18n="brandName">AI Weather</strong><span data-i18n="stickySub">Forecasts & planning · Free</span></div>
+        </div>
+        <a href="https://apps.apple.com/app/id6748373741" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer" data-i18n="stickyGet">Get</a>
+    </div>
 
     <script src="script.js"></script>
 </body>
