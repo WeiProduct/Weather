@@ -69,6 +69,7 @@
             <div class="nav-menu">
                 <a href="#how" class="nav-link" data-i18n="navHow">How it works</a>
                 <a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
+                <a href="#try" class="nav-link" data-i18n="navTry">Try it</a>
                 <a href="#screenshots" class="nav-link" data-i18n="navScreenshots">Screenshots</a>
                 <a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a>
                 <button class="icon-btn" type="button" id="themeToggle" aria-label="Toggle dark mode">
@@ -79,6 +80,7 @@
                 <a href="https://apps.apple.com/app/id6748373741" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="navGet">Get App</a>
             </div>
         </div>
+        <span class="scroll-progress" id="scrollProgress" aria-hidden="true"></span>
     </nav>
 
     <main id="main">
@@ -160,6 +162,7 @@
 
     <section id="how" class="how">
         <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="eyebrowHow">How it works</span></div>
             <h2 class="section-title" data-i18n="howTitle">Three steps to a weather-ready day</h2>
             <p class="section-sub" data-i18n="howSub">From forecast to a real decision in seconds.</p>
             <div class="steps">
@@ -182,11 +185,35 @@
                     <p data-i18n="step3Desc">Turn the forecast into decisions: what to wear, when to head out, what to prepare.</p>
                 </div>
             </div>
+            <h3 class="personas-title" data-i18n="personasTitle">Made for your kind of day</h3>
+            <div class="personas">
+                <div class="persona-card reveal">
+                    <span class="persona-ic" aria-hidden="true">🚇</span>
+                    <h4 data-i18n="persona1T">Commuters</h4>
+                    <p data-i18n="persona1D">Hourly changes decide when you leave.</p>
+                </div>
+                <div class="persona-card reveal">
+                    <span class="persona-ic" aria-hidden="true">✈️</span>
+                    <h4 data-i18n="persona2T">Travelers</h4>
+                    <p data-i18n="persona2D">Keep every destination city one swipe away.</p>
+                </div>
+                <div class="persona-card reveal">
+                    <span class="persona-ic" aria-hidden="true">👨‍👩‍👧</span>
+                    <h4 data-i18n="persona3T">Family planners</h4>
+                    <p data-i18n="persona3D">Watch the weather where your people are.</p>
+                </div>
+                <div class="persona-card reveal">
+                    <span class="persona-ic" aria-hidden="true">🏃</span>
+                    <h4 data-i18n="persona4T">Outdoor movers</h4>
+                    <p data-i18n="persona4D">Find the dry, cool window for your run.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="features" class="features">
         <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="eyebrowFeatures">Features</span></div>
             <h2 class="section-title" data-i18n="featuresTitle">Everything you need to read the sky</h2>
             <p class="section-sub" data-i18n="featuresSub">A practical weather surface, not just a list of numbers.</p>
             <div class="features-grid">
@@ -224,8 +251,40 @@
         </div>
     </section>
 
+    <section id="try" class="try">
+        <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="eyebrowTry">Interactive demo</span></div>
+            <h2 class="section-title" data-i18n="tryTitle">From forecast to decision — try it</h2>
+            <p class="section-sub" data-i18n="trySub">Pick a sky. This is what AI Weather does with every forecast.</p>
+            <div class="try-chips" role="group" aria-label="Weather scenarios">
+                <button type="button" class="try-chip active" data-scenario="Sun" aria-pressed="true"><span aria-hidden="true">☀️</span><span data-i18n="tryScSun">Sunny 28°</span></button>
+                <button type="button" class="try-chip" data-scenario="Rain" aria-pressed="false"><span aria-hidden="true">🌧️</span><span data-i18n="tryScRain">Rain at 4 PM</span></button>
+                <button type="button" class="try-chip" data-scenario="Wind" aria-pressed="false"><span aria-hidden="true">🌬️</span><span data-i18n="tryScWind">Windy 12°</span></button>
+                <button type="button" class="try-chip" data-scenario="Cold" aria-pressed="false"><span aria-hidden="true">❄️</span><span data-i18n="tryScCold">Cold snap −2°</span></button>
+            </div>
+            <div class="try-grid" id="tryGrid" aria-live="polite">
+                <div class="try-card reveal" data-slot="Wear">
+                    <div class="try-ic" aria-hidden="true">🧥</div>
+                    <h3 data-i18n="tryWear">Wear</h3>
+                    <p class="try-out">Light, breathable layers + sunscreen</p>
+                </div>
+                <div class="try-card reveal" data-slot="Bring">
+                    <div class="try-ic" aria-hidden="true">🎒</div>
+                    <h3 data-i18n="tryBring">Bring</h3>
+                    <p class="try-out">Sunglasses and a water bottle</p>
+                </div>
+                <div class="try-card reveal" data-slot="Time">
+                    <div class="try-ic" aria-hidden="true">⏱️</div>
+                    <h3 data-i18n="tryTime">Timing</h3>
+                    <p class="try-out">Best outdoor window: before noon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="screenshots" class="screenshots">
         <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="eyebrowShots">Screens</span></div>
             <h2 class="section-title" data-i18n="screenshotsTitle">Real app screens</h2>
             <p class="section-sub" data-i18n="screenshotsSub">Swipe through — tap any shot to zoom in.</p>
             <div class="gallery">
@@ -262,9 +321,48 @@
         </div>
     </section>
 
+    <section class="day">
+        <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="dayEyebrow">One day, four glances</span></div>
+            <h2 class="section-title" data-i18n="dayTitle">A day with AI Weather</h2>
+            <p class="section-sub" data-i18n="daySub">Four quick glances, zero weather surprises.</p>
+            <ol class="day-line reveal">
+                <li class="day-node reveal">
+                    <span class="day-ic" aria-hidden="true">🌤️</span>
+                    <div class="day-body">
+                        <span class="day-time" data-i18n="dayT1">7:30 AM</span>
+                        <p data-i18n="dayC1">Glance at conditions before getting dressed.</p>
+                    </div>
+                </li>
+                <li class="day-node reveal">
+                    <span class="day-ic" aria-hidden="true">⏱️</span>
+                    <div class="day-body">
+                        <span class="day-time" data-i18n="dayT2">8:15 AM</span>
+                        <p data-i18n="dayC2">Hourly view picks your commute window.</p>
+                    </div>
+                </li>
+                <li class="day-node reveal">
+                    <span class="day-ic" aria-hidden="true">☔</span>
+                    <div class="day-body">
+                        <span class="day-time" data-i18n="dayT3">3:40 PM</span>
+                        <p data-i18n="dayC3">Rain cue: grab the umbrella before you leave.</p>
+                    </div>
+                </li>
+                <li class="day-node reveal">
+                    <span class="day-ic" aria-hidden="true">📅</span>
+                    <div class="day-body">
+                        <span class="day-time" data-i18n="dayT4">9:00 PM</span>
+                        <p data-i18n="dayC4">Scan the 7-day outlook, plan tomorrow.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
     <section id="privacy" class="privacy">
         <div class="container privacy-card">
             <div class="privacy-lead">
+                <span class="eyebrow sm inverse" data-i18n="eyebrowPrivacy">Privacy</span>
                 <h2 data-i18n="privacyTitle">Location is used for weather — with your permission</h2>
                 <p data-i18n="privacyDesc">Weather needs location. AI Weather asks first, uses it only to fetch forecasts from weather providers, and you stay in control — change or revoke access anytime in Settings. No account required.</p>
             </div>
@@ -277,8 +375,61 @@
         </div>
     </section>
 
+    <section class="compare">
+        <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="eyebrowCompare">Why AI Weather</span></div>
+            <h2 class="section-title" data-i18n="cmpTitle">Numbers everywhere. Decisions here.</h2>
+            <p class="section-sub" data-i18n="cmpSub">What you actually get when you check the weather.</p>
+            <div class="table-wrap">
+                <table class="cmp-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n="cmpCap">What you get</th>
+                            <th scope="col" data-i18n="cmpColA">Checking a browser</th>
+                            <th scope="col" data-i18n="cmpColB">Typical weather widget</th>
+                            <th scope="col" data-i18n="cmpColC">AI Weather</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" data-i18n="cmpRow1">Hourly & 7-day numbers</th>
+                            <td><span class="cmp-mark cmp-part" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/></svg></span><span class="sr-only" data-i18n="cmpPart">Partly</span></td>
+                            <td><span class="cmp-mark cmp-yes" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only" data-i18n="cmpYes">Yes</span></td>
+                            <td><span class="cmp-mark cmp-yes" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only" data-i18n="cmpYes">Yes</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpRow2">What to wear / bring</th>
+                            <td><span class="cmp-mark cmp-no" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sr-only" data-i18n="cmpNo">No</span></td>
+                            <td><span class="cmp-mark cmp-no" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sr-only" data-i18n="cmpNo">No</span></td>
+                            <td><span class="cmp-mark cmp-yes" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only" data-i18n="cmpYes">Yes</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpRow3">Multiple cities in one place</th>
+                            <td><span class="cmp-mark cmp-no" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sr-only" data-i18n="cmpNo">No</span></td>
+                            <td><span class="cmp-mark cmp-part" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/></svg></span><span class="sr-only" data-i18n="cmpPart">Partly</span></td>
+                            <td><span class="cmp-mark cmp-yes" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only" data-i18n="cmpYes">Yes</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpRow4">EN / 中文 one-tap switch</th>
+                            <td><span class="cmp-mark cmp-no" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sr-only" data-i18n="cmpNo">No</span></td>
+                            <td><span class="cmp-mark cmp-no" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sr-only" data-i18n="cmpNo">No</span></td>
+                            <td><span class="cmp-mark cmp-yes" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only" data-i18n="cmpYes">Yes</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpRow5">No account, no ads</th>
+                            <td><span class="cmp-mark cmp-no" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><span class="sr-only" data-i18n="cmpNo">No</span></td>
+                            <td><span class="cmp-mark cmp-part" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/></svg></span><span class="sr-only" data-i18n="cmpPart">Partly</span></td>
+                            <td><span class="cmp-mark cmp-yes" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="sr-only" data-i18n="cmpYes">Yes</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <section id="faq" class="faq">
         <div class="container">
+            <div class="eyebrow-wrap"><span class="eyebrow sm" data-i18n="eyebrowFaq">FAQ</span></div>
             <h2 class="section-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
             <div class="faq-list">
                 <details class="faq-item reveal"><summary data-i18n="q1">Does AI Weather need an internet connection?</summary><p data-i18n="a1">Yes. Weather data is fetched from weather providers, so a connection is needed to refresh current conditions and forecasts.</p></details>
@@ -314,17 +465,44 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="nav-brand" href="#top" aria-label="AI Weather">
+                        <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="24" fill="url(#bg)"/><g stroke="#ffd76b" stroke-width="4" stroke-linecap="round"><path d="M64 14v6"/><path d="M86 35h-6"/><path d="M78 22l-4 4"/></g><circle cx="64" cy="35" r="12" fill="#ffd76b"/><g fill="#fff"><circle cx="38" cy="60" r="13"/><circle cx="53" cy="53" r="16"/><circle cx="66" cy="61" r="12"/><rect x="33" y="60" width="42" height="15" rx="7.5"/></g></svg></span>
+                        <span class="brand-name" data-i18n="brandName">AI Weather</span>
+                    </a>
+                    <p class="footer-tag" data-i18n="footerTag">Weather, turned into decisions.</p>
+                    <div class="footer-ctl">
+                        <button class="icon-btn" type="button" id="themeToggleFooter" aria-label="Toggle dark mode">
+                            <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                            <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+                        </button>
+                        <button class="lang-switch" type="button" id="langSwitchFooter" aria-label="Switch language">中文</button>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerExplore">Explore</h3>
+                    <ul>
+                        <li><a href="#how" data-i18n="navHow">How it works</a></li>
+                        <li><a href="#features" data-i18n="navFeatures">Features</a></li>
+                        <li><a href="#try" data-i18n="navTry">Try it</a></li>
+                        <li><a href="#screenshots" data-i18n="navScreenshots">Screenshots</a></li>
+                        <li><a href="#faq" data-i18n="navFaq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-i18n="footerLegal">Legal & contact</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html" data-i18n="footerPrivacy">Privacy</a></li>
+                        <li><a href="support.html" data-i18n="footerSupport">Support</a></li>
+                        <li><a href="terms.html" data-i18n="footerTerms">Terms</a></li>
+                        <li><a href="mailto:1597498880weiproduct@gmail.com">1597498880weiproduct@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p>&copy; <span id="currentYear">2026</span> <span data-i18n="footerRights">AI Weather. All rights reserved.</span></p>
                 <p data-i18n="footerMadeBy">Built by WeiProduct</p>
-                <p>Contact: <a href="mailto:1597498880weiproduct@gmail.com">1597498880weiproduct@gmail.com</a></p>
-                <p class="footer-links">
-                    <a href="privacy-policy.html" data-i18n="footerPrivacy">Privacy</a>
-                    <span aria-hidden="true">·</span>
-                    <a href="support.html" data-i18n="footerSupport">Support</a>
-                    <span aria-hidden="true">·</span>
-                    <a href="terms.html" data-i18n="footerTerms">Terms</a>
-                </p>
             </div>
         </div>
     </footer>
