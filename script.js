@@ -64,7 +64,18 @@ const I18N = {
     footerRights: 'AI Weather. All rights reserved.', footerMadeBy: 'Built by WeiProduct',
     footerTag: 'Weather, turned into decisions.', footerExplore: 'Explore', footerLegal: 'Legal & contact',
     footerPrivacy: 'Privacy', footerSupport: 'Support', footerTerms: 'Terms',
-    stickySub: 'Forecasts & planning · Free', stickyGet: 'Get'
+    stickySub: 'Forecasts & planning · Free', stickyGet: 'Get',
+    /* AI-AVATAR */
+    aiTitle: 'AI Avatar · AI Weather Assistant',
+    aiGreeting: 'Hi! I\'m the AI avatar for AI Weather ⛅ Ask me about forecasts, daily recommendations, multi-city, privacy, or pricing.',
+    aiPlaceholder: 'Type your question…',
+    aiSend: 'Send',
+    aiChip1: 'How does AI Weather plan my day?',
+    aiChip2: 'How is my location used?',
+    aiChip3: 'Can I track multiple cities?',
+    aiDisclaimer: 'AI-generated · for reference only',
+    aiError: 'Sorry, the assistant is temporarily unreachable — please try again later. （抱歉，AI 助手暂时连不上，请稍后再试。）'
+    /* /AI-AVATAR */
   },
   'zh-CN': {
     skip: '跳到主要内容',
@@ -130,7 +141,18 @@ const I18N = {
     footerRights: 'AI 天气. 保留所有权利。', footerMadeBy: 'Built by WeiProduct',
     footerTag: '把天气变成决定。', footerExplore: '页面导航', footerLegal: '法律与联系',
     footerPrivacy: '隐私政策', footerSupport: '支持', footerTerms: '条款',
-    stickySub: '预报与规划 · 免费', stickyGet: '获取'
+    stickySub: '预报与规划 · 免费', stickyGet: '获取',
+    /* AI-AVATAR */
+    aiTitle: 'AI分身 · AI天气助手',
+    aiGreeting: '你好！我是 AI 天气 的 AI分身 ⛅ 关于天气预报、穿衣出行建议、多城市、隐私或价格，都可以问我。',
+    aiPlaceholder: '输入你的问题…',
+    aiSend: '发送',
+    aiChip1: 'AI 天气怎么帮我规划一天？',
+    aiChip2: '我的定位会被如何使用？',
+    aiChip3: '可以关注多个城市吗？',
+    aiDisclaimer: 'AI 生成，仅供参考',
+    aiError: '抱歉，AI 助手暂时连不上，请稍后再试。(Sorry, the assistant is temporarily unreachable — please try again later.)'
+    /* /AI-AVATAR */
   }
 };
 
@@ -143,6 +165,12 @@ function applyLang(lang) {
     const k = el.getAttribute('data-i18n');
     if (t[k] !== undefined) el.textContent = t[k];
   });
+  /* AI-AVATAR: translate placeholder attributes */
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const k = el.getAttribute('data-i18n-ph');
+    if (t[k] !== undefined) el.setAttribute('placeholder', t[k]);
+  });
+  /* /AI-AVATAR */
   document.documentElement.lang = currentLang;
   document.querySelectorAll('.lang-switch').forEach(b => { b.textContent = currentLang === 'en' ? '中文' : 'EN'; });
   try { localStorage.setItem('lang', currentLang); } catch (e) {}
@@ -318,3 +346,148 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* AI-AVATAR: floating "AI分身" assistant widget */
+(function () {
+  const AI_PROXY_URL = 'https://personal-portfolio-api-sandy.vercel.app/api/chat-proxy';
+  const AI_SYSTEM_PROMPT = [
+    'You are the "AI分身" (AI avatar) assistant on the promo website of AI Weather (AI 天气), an iOS weather app by WeiProduct.',
+    '',
+    'App facts (the ONLY facts you may state):',
+    '- One-liner: turn the forecast into clear daily decisions — what to wear, what to bring, and when to go.',
+    '- Key features: current conditions (temperature, condition, feels-like, humidity, wind); hourly and 7-day / multi-day forecasts; multi-city management for home, travel, and family with instant switching; practical guidance (clothing tips, weather alerts, preparation cues); bilingual interface with one-tap language switch; no account or sign-up needed.',
+    '- Privacy: location is permission-based and used only to fetch weather for your area from weather providers; you can deny, change, or revoke access anytime in system Settings; no account, no ads, no tracking.',
+    '- Internet: weather data comes from weather providers, so a connection is needed to refresh conditions and forecasts.',
+    '- Platform: iPhone (iOS).',
+    '- Price: free.',
+    '- Languages: English and Simplified Chinese (中文).',
+    '- App Store link: https://apps.apple.com/app/id6748373741',
+    '',
+    'Style rules:',
+    '- ALWAYS reply in the same language as the user\'s most recent message: English question → English answer, 中文提问 → 中文回答. Do NOT default to Chinese just because the app has a Chinese name.',
+    '- Keep replies to 1-3 short sentences; be friendly and concrete.',
+    '- NEVER invent download counts, ratings, reviews, or features not listed above. You cannot see live weather data, so never state a real forecast — explain what the app would show instead.',
+    '- If asked about unrelated topics, politely steer the conversation back to AI Weather.',
+    '- When the user wants to download or try the app, point them to the App Store link.'
+  ].join('\n');
+  const AI_MAX_HISTORY = 12;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('aiToggle');
+    const panel = document.getElementById('aiPanel');
+    const closeBtn = document.getElementById('aiClose');
+    const msgs = document.getElementById('aiMsgs');
+    const chipsWrap = document.getElementById('aiChips');
+    const form = document.getElementById('aiForm');
+    const input = document.getElementById('aiInput');
+    const sendBtn = document.getElementById('aiSendBtn');
+    if (!toggle || !panel || !msgs || !form || !input) return;
+
+    let history = [];
+    let greeted = false;
+    let busy = false;
+
+    function addBubble(role, text, i18nKey) {
+      const div = document.createElement('div');
+      div.className = 'ai-msg ' + (role === 'user' ? 'user' : 'bot');
+      if (i18nKey) {
+        div.setAttribute('data-i18n', i18nKey); // follows future language switches too
+        div.textContent = I18N[currentLang][i18nKey];
+      } else {
+        div.textContent = text;
+      }
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      return div;
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'ai-msg bot ai-typing';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      return div;
+    }
+
+    function openPanel() {
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      if (!greeted) { greeted = true; addBubble('bot', '', 'aiGreeting'); }
+      input.focus();
+    }
+    function closePanel() {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+
+    async function send(text) {
+      text = (text || '').trim();
+      if (!text || busy) return;
+      busy = true;
+      if (sendBtn) sendBtn.disabled = true;
+      if (chipsWrap) chipsWrap.hidden = true;
+      addBubble('user', text);
+      history.push({ role: 'user', content: text });
+      history = history.slice(-AI_MAX_HISTORY);
+      const typing = showTyping();
+      try {
+        const res = await fetch(AI_PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            messages: [{ role: 'system', content: AI_SYSTEM_PROMPT }].concat(history),
+            max_tokens: 350
+          })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        let reply = '';
+        if (data && data.choices && data.choices[0]) {
+          const m = data.choices[0].message;
+          reply = (m && m.content) || data.choices[0].text || '';
+        }
+        if (!reply && data && typeof data.content === 'string') reply = data.content;
+        if (!reply && data && typeof data.reply === 'string') reply = data.reply;
+        if (!reply && data && typeof data.message === 'string') reply = data.message;
+        reply = (reply || '').trim();
+        if (!reply) throw new Error('empty reply');
+        typing.remove();
+        addBubble('bot', reply);
+        history.push({ role: 'assistant', content: reply });
+        history = history.slice(-AI_MAX_HISTORY);
+      } catch (err) {
+        typing.remove();
+        addBubble('bot', '', 'aiError');
+      } finally {
+        busy = false;
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
+
+    toggle.addEventListener('click', () => (panel.hidden ? openPanel() : closePanel()));
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
+    if (chipsWrap) chipsWrap.querySelectorAll('.ai-chip').forEach(chip => {
+      chip.addEventListener('click', () => send(chip.textContent));
+    });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = input.value;
+      input.value = '';
+      send(v);
+    });
+
+    // Dev/verify affordance: ?aichat=open auto-opens; ?aichat=demo also sends chip 1 for real.
+    const q = location.search;
+    if (q.indexOf('aichat=open') !== -1 || q.indexOf('aichat=demo') !== -1) {
+      openPanel();
+      if (q.indexOf('aichat=demo') !== -1) {
+        setTimeout(() => send(I18N[currentLang].aiChip1), 600);
+      }
+    }
+  });
+})();
+/* /AI-AVATAR */
