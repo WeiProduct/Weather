@@ -185,7 +185,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .proof { padding: 22px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); background: var(--bg-secondary); }
 .proof-row { display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap; }
 .proof-rating { display: flex; align-items: center; gap: 12px; }
-.stars { color: #ffb400; font-size: 22px; letter-spacing: 2px; }
+.proof-badge { display: flex; align-items: center; height: 35px; color: var(--text-primary); }
+.proof-badge svg { display: block; }
 .proof-sub { display: flex; flex-direction: column; line-height: 1.25; font-size: 13px; color: var(--text-secondary); }
 .proof-sub strong { color: var(--text-primary); font-size: 15px; }
 .proof-stats { display: flex; gap: 34px; flex-wrap: wrap; }
@@ -209,11 +210,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .steps .step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -18px; width: 20px; height: 2px; background: var(--border-color); }
 
 /* Personas (payoff of How it works) */
-.personas-title { margin-top: 72px; margin-bottom: 30px; font-size: clamp(22px, 3vw, 28px); font-weight: 800; text-align: center; letter-spacing: -0.02em; }
+.personas-eyebrow { margin-top: 72px; }
+.personas-title { margin-top: 0; margin-bottom: 30px; font-size: clamp(22px, 3vw, 28px); font-weight: 800; text-align: center; letter-spacing: -0.02em; }
 .personas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .persona-card { background: var(--card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 26px 22px; box-shadow: var(--shadow); transition: transform .3s, box-shadow .3s; }
 .persona-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .persona-ic { width: 46px; height: 46px; border-radius: 50%; background: var(--chip-bg); display: grid; place-items: center; font-size: 21px; margin-bottom: 14px; }
+.persona-ic svg { color: var(--primary-color); }
 .persona-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
 .persona-card p { color: var(--text-secondary); font-size: 14px; }
 
